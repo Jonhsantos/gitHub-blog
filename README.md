@@ -52,10 +52,8 @@ Build estático em `dist/`. Deploy via GitHub Pages (workflow em `.github/workfl
 
 ## Capturas
 
-![Home desktop](docs/images/home-desktop.png)
-![Detalhe desktop](docs/images/post-desktop.png)
-![Home mobile](docs/images/home-mobile.png)
-![Detalhe mobile](docs/images/post-mobile.png)
+![Home desktop](docs/images/home-desktop.jpg)
+![Detalhe desktop](docs/images/post-desktop.jpg)
 
 ## Roteiro de demonstração
 

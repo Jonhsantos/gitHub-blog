@@ -63,4 +63,3 @@ Build estático em `dist/`. Deploy via GitHub Pages (workflow em `.github/workfl
 4. Abrir um post e ler Markdown.
 5. Voltar preservando busca/página.
 6. Testar acesso direto a `/post/1` com recarga.
-EOF

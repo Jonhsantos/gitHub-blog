@@ -7,7 +7,7 @@ import { normalizeSearch } from '../utils/markdown';
 import { APP_CONFIG } from '../config/app.config';
 import { ProfileCard } from '../components/ProfileCard';
 import { SearchInput } from '../components/SearchInput';
-import { IssueList } from '../components/IssueList';
+import { IssueCard } from '../components/IssueCard';
 import { Pagination } from '../components/Pagination';
 import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
@@ -25,7 +25,6 @@ export function Home() {
   const { issues, loading: issuesLoading, error: issuesError, retry: retryIssues, hasNext, hasPrev } =
     useIssues({ query: qParam, page: pageParam });
 
-  // Apply debounced search
   useEffect(() => {
     const normalized = normalizeSearch(debounced);
     if (normalized !== qParam) {
@@ -46,52 +45,69 @@ export function Home() {
   };
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-6 md:px-8">
-      <header className="mb-6 flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">GITHUB BLOG</h2>
-      </header>
+    <div className="min-h-screen bg-bg">
+      {/* Cover */}
+      <div className="relative h-[296px] overflow-hidden bg-profile">
+        <div className="absolute -left-[130px] -top-[96px] h-[236px] w-[236px] rounded-full bg-accent/20 blur-3xl" />
+        <div className="absolute -right-[10px] -top-[52px] h-[190px] w-[190px] rotate-[15deg] rounded-full bg-accent/20 blur-3xl" />
+        <div className="absolute left-1/2 top-[64px] flex -translate-x-1/2 flex-col items-center gap-5">
+          <div className="flex h-[40px] w-[45px] items-center justify-center text-accent">
+            <svg viewBox="0 0 45 40" className="h-full w-full" fill="currentColor" aria-hidden>
+              <path d="M0 0h45v40H0z" opacity="0" />
+              <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fontSize="28" fontFamily="monospace">&gt;_</text>
+            </svg>
+          </div>
+          <h1 className="whitespace-nowrap font-logo text-[24px] text-accent">GITHUB BLOG</h1>
+        </div>
+      </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[320px_1fr]">
-        <div>
-          {profileLoading && <LoadingState message="Carregando perfil..." />}
-          {profileError && <ErrorState error={profileError} onRetry={retryProfile} />}
-          {profile && <ProfileCard user={profile} />}
+      <div className="mx-auto max-w-[1120px] px-4 py-8 md:px-0">
+        {/* Profile */}
+        {profileLoading && <LoadingState message="Carregando perfil..." />}
+        {profileError && <ErrorState error={profileError} onRetry={retryProfile} />}
+        {profile && <ProfileCard user={profile} />}
+
+        {/* Search */}
+        <div className="mt-8 w-full max-w-[864px]">
+          <SearchInput
+            value={inputValue}
+            onChange={setInputValue}
+            onSubmit={applySearch}
+            placeholder="Buscar conteúdo"
+          />
         </div>
 
-        <section aria-labelledby="posts-heading">
-          <h2 id="posts-heading" className="mb-4 text-xl font-semibold text-gray-900">
-            Publicações
-          </h2>
-          <div className="mb-4">
-            <SearchInput
-              value={inputValue}
-              onChange={setInputValue}
-              onSubmit={applySearch}
-              placeholder="Buscar publicações..."
-            />
-          </div>
+        {/* Posts header */}
+        <div className="mt-8 flex items-center justify-between">
+          <h2 className="text-[18px] font-bold text-subtitle">Publicações</h2>
+          <span className="text-[14px] text-muted">{issues.length} publicações</span>
+        </div>
 
-          {issuesLoading && <LoadingState message="Carregando publicações..." />}
-          {issuesError && <ErrorState error={issuesError} onRetry={retryIssues} />}
-          {!issuesLoading && !issuesError && issues.length === 0 && (
-            <div role="status" aria-live="polite" className="py-12 text-center text-gray-500">
-              Nenhuma publicação encontrada.
+        {/* States */}
+        {issuesLoading && <LoadingState message="Carregando publicações..." />}
+        {issuesError && <ErrorState error={issuesError} onRetry={retryIssues} />}
+        {!issuesLoading && !issuesError && issues.length === 0 && (
+          <div role="status" aria-live="polite" className="py-12 text-center text-muted">
+            Nenhuma publicação encontrada.
+          </div>
+        )}
+        {!issuesLoading && !issuesError && issues.length > 0 && (
+          <>
+            <div className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2">
+              {issues.map((issue) => (
+                <IssueCard key={issue.number} issue={issue} />
+              ))}
             </div>
-          )}
-          {!issuesLoading && !issuesError && issues.length > 0 && (
-            <>
-              <IssueList issues={issues} />
-              <Pagination
-                page={pageParam}
-                hasNext={hasNext}
-                hasPrev={hasPrev}
-                onPrev={goPrev}
-                onNext={goNext}
-              />
-            </>
-          )}
-        </section>
+            <Pagination
+              page={pageParam}
+              hasNext={hasNext}
+              hasPrev={hasPrev}
+              onPrev={goPrev}
+              onNext={goNext}
+            />
+          </>
+        )}
       </div>
-    </main>
+    </div>
   );
 }

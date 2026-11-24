@@ -7,30 +7,41 @@ interface Props {
 export function ProfileCard({ user }: Props) {
   const name = user.name ?? user.login;
   return (
-    <aside className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
-      <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start">
+    <aside className="relative overflow-hidden rounded-[10px] bg-profile p-6 shadow-[0_2px_28px_0_rgba(0,0,0,0.2)]">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
         <img
           src={user.avatar_url}
           alt={`Avatar de ${name}`}
-          className="h-24 w-24 rounded-full ring-2 ring-gray-100"
+          className="h-[148px] w-[148px] rounded-[8px] object-cover"
         />
-        <div className="flex-1 text-center sm:text-left">
-          <h1 className="text-xl font-bold text-gray-900">{name}</h1>
-          <p className="text-sm text-gray-500">@{user.login}</p>
-          {user.bio && <p className="mt-2 text-sm text-gray-700">{user.bio}</p>}
-          {user.company && (
-            <p className="mt-1 text-sm text-gray-500">{user.company}</p>
+        <div className="flex-1">
+          <h1 className="font-bold text-[24px] leading-[1.3] text-title">{name}</h1>
+          {user.bio && (
+            <p className="mt-2 w-full max-w-[612px] text-[16px] leading-[1.6] text-text">
+              {user.bio}
+            </p>
           )}
-          <p className="mt-2 text-sm text-gray-600">
-            {user.followers} seguidores
-          </p>
+          <div className="mt-4 flex flex-wrap items-center gap-6 text-[16px] text-subtitle">
+            <span className="flex items-center gap-2">
+              <span className="text-muted">●</span> @{user.login}
+            </span>
+            {user.company && (
+              <span className="flex items-center gap-2">
+                <span className="text-muted">●</span> {user.company}
+              </span>
+            )}
+            <span className="flex items-center gap-2">
+              <span className="text-muted">●</span> {user.followers} seguidores
+            </span>
+          </div>
           <a
             href={user.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-block text-sm font-medium text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold uppercase text-accent"
           >
-            Ver perfil no GitHub
+            github
+            <span aria-hidden>↗</span>
           </a>
         </div>
       </div>

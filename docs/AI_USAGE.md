@@ -20,4 +20,3 @@
 - **Objetivo:** Criar SPECs, scaffold Vite e implementar componentes/páginas/testes.
 - **Resultado observado:** 4 documentos commitados; projeto Vite + React + TS + Tailwind; 7 componentes, 3 páginas, 3 hooks, 6 testes passando; typecheck e build OK.
 - **Referência:** commits `aa88ed1` e posteriores; `docs/`.
-EOF

@@ -57,49 +57,54 @@ export function PostDetail() {
   const author = issue.user?.login ?? 'desconhecido';
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-6 md:px-8">
-      <button
-        type="button"
-        onClick={handleBack}
-        className="mb-4 text-sm font-medium text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        ← Voltar
-      </button>
+    <div className="min-h-screen bg-bg">
+      <main className="mx-auto max-w-[864px] px-4 py-8">
+        <button
+          type="button"
+          onClick={handleBack}
+          className="mb-6 text-sm font-bold text-accent hover:underline focus:outline-none focus:ring-2 focus:ring-accent"
+        >
+          ← Voltar
+        </button>
 
-      <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
-        <h1 className="text-2xl font-bold text-gray-900 md:text-3xl">{issue.title}</h1>
-        <p className="mt-2 text-sm text-gray-500">
-          Por {author} · {formatDate(issue.created_at)} · {issue.comments} comentários
-        </p>
+        <article className="rounded-[10px] bg-profile p-8 shadow-[0_2px_28px_0_rgba(0,0,0,0.2)]">
+          <h1 className="text-[24px] font-bold leading-[1.3] text-title md:text-[24px]">
+            {issue.title}
+          </h1>
+          <p className="mt-2 text-[14px] text-muted">
+            Por {author} · {formatDate(issue.created_at)} · {issue.comments} comentários
+          </p>
 
-        <div className="prose mt-6 max-w-none overflow-x-auto">
-          <ReactMarkdown
-            components={{
-              a: ({ node, ...props }) => (
-                <a {...props} target="_blank" rel="noopener noreferrer" />
-              ),
-              code: ({ node, className, children, ...props }) => (
-                <code className={`${className ?? ''} block overflow-x-auto`} {...props}>
-                  {children}
-                </code>
-              ),
-            }}
-          >
-            {issue.body ?? '_Sem conteúdo._'}
-          </ReactMarkdown>
-        </div>
+          <div className="prose prose-invert mt-6 max-w-none overflow-x-auto text-text">
+            <ReactMarkdown
+              components={{
+                a: ({ node, ...props }) => (
+                  <a {...props} className="text-accent underline" target="_blank" rel="noopener noreferrer" />
+                ),
+                code: ({ node, className, children, ...props }) => (
+                  <code className={`${className ?? ''} block overflow-x-auto rounded bg-input p-2 text-text`} {...props}>
+                    {children}
+                  </code>
+                ),
+                p: ({ node, ...props }) => <p className="mb-4 leading-[1.6]" {...props} />,
+              }}
+            >
+              {issue.body ?? '_Sem conteúdo._'}
+            </ReactMarkdown>
+          </div>
 
-        <div className="mt-6">
-          <a
-            href={issue.html_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
-          >
-            Ver no GitHub
-          </a>
-        </div>
-      </article>
-    </main>
+          <div className="mt-6">
+            <a
+              href={issue.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-[6px] bg-accent px-4 py-2 text-sm font-bold text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent"
+            >
+              Ver no GitHub
+            </a>
+          </div>
+        </article>
+      </main>
+    </div>
   );
 }

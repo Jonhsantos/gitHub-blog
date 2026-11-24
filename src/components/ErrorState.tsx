@@ -11,19 +11,17 @@ export function ErrorState({ error, onRetry }: Props) {
     <div
       role="alert"
       aria-live="assertive"
-      className="rounded-2xl border border-red-200 bg-red-50 p-6 text-center"
+      className="rounded-[10px] border border-red-500/30 bg-red-900/20 p-6 text-center"
     >
-      <p className="text-sm font-medium text-red-700">{error.message}</p>
+      <p className="text-sm font-medium text-red-300">{error.message}</p>
       {error.retryAfter && (
-        <p className="mt-1 text-xs text-red-600">
-          Tente novamente em {error.retryAfter}s.
-        </p>
+        <p className="mt-1 text-xs text-red-400">Tente novamente em {error.retryAfter}s.</p>
       )}
       {retryable && onRetry && (
         <button
           type="button"
           onClick={onRetry}
-          className="mt-4 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+          className="mt-4 rounded-[6px] bg-accent px-4 py-2 text-sm font-bold text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent"
         >
           Tentar novamente
         </button>

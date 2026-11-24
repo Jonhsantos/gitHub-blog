@@ -24,4 +24,3 @@ Checklist em ordem. Atualize o status ao concluir cada tarefa e faça commit sem
 | T-18 | README + capturas | T-17 | — | README.md | Docs completas | Pendente |
 | T-19 | AI_USAGE.md | T-17 | — | docs/AI_USAGE.md | ≥3 evidências | Pendente |
 | T-20 | Deploy GitHub Pages | T-17 | — | .github/workflows/* | URL registrada se OK | Pendente |
-EOF

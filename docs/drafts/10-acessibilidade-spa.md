@@ -31,4 +31,3 @@ Use Testing Library com `getByRole`, `getByLabelText`.
 ## Referências
 
 - [WCAG 2.1](https://www.w3.org/WAI/standards-guidelines/wcag/)
-EOF

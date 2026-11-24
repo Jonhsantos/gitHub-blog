@@ -53,4 +53,3 @@ console.log(perfil.login);
 - [ECMAScript spec](https://tc39.es/ecma262/)
 
 > Dica: prefira `const` e `let`; evite `var`.
-EOF

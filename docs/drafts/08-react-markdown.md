@@ -32,4 +32,3 @@ Para cards, extraia texto do Markdown removendo marcadores e trunque.
 ## Referências
 
 - [react-markdown](https://github.com/remarkjs/react-markdown)
-EOF

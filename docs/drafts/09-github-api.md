@@ -23,4 +23,3 @@ Headers `X-RateLimit-Remaining`, `X-RateLimit-Reset`, `Retry-After`.
 ## Referências
 
 - [GitHub REST](https://docs.github.com/en/rest)
-EOF

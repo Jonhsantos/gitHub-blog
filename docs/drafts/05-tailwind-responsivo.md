@@ -41,4 +41,3 @@ Tailwind fornece classes utilitárias para estilizar sem CSS customizado.
 ## Referências
 
 - [Tailwind Docs](https://tailwindcss.com/docs)
-EOF

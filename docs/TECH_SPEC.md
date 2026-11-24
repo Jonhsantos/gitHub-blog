@@ -170,4 +170,3 @@ export const APP_CONFIG = {
   },
 } as const;
 ```
-EOF

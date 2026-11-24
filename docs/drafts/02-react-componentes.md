@@ -47,4 +47,3 @@ const itens = ["a", "b", "c"];
 ## Referências
 
 - [React Docs](https://react.dev/)
-EOF

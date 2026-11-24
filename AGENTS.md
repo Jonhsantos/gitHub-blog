@@ -37,4 +37,3 @@ Ver `docs/TECH_SPEC.md` §2 e §4. Camadas: config, types, services, hooks, util
 ## Orientação
 
 Consulte as SPECs antes de alterar código. Não publique credenciais. Preserve trabalho existente.
-EOF

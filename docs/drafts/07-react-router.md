@@ -40,4 +40,3 @@ Garanta foco no conteúdo principal após navegação.
 ## Referências
 
 - [React Router](https://reactrouter.com/)
-EOF

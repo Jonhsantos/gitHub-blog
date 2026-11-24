@@ -46,4 +46,3 @@ Respeite `Retry-After` e `X-RateLimit-Reset`. Em 403/429, exiba mensagem e permi
 ## Referências
 
 - [Axios Docs](https://axios-http.com/docs/intro)
-EOF

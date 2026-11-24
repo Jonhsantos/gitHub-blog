@@ -52,4 +52,3 @@ function primeiro<T>(lista: T[]): T | undefined {
 ## Referências
 
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-EOF

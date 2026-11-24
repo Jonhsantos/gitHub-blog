@@ -44,4 +44,3 @@ npm run preview
 ## Links
 
 - [Vite Guide](https://vitejs.dev/guide/)
-EOF

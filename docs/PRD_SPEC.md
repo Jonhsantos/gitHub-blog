@@ -97,4 +97,3 @@ Sem autenticação, backend, banco de dados, edição/criação de posts, token 
 - Perfil com avatar circular, nome, bio, username, empresa, seguidores e link GitHub.
 
 > Nota: comparação visual detalhada registrada como pendente até inspeção completa do protótipo.
-EOF
